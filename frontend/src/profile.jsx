@@ -7,7 +7,11 @@ import { FaShoppingCart } from "react-icons/fa";
 import { FaHistory } from "react-icons/fa";
 import { set } from "mongoose";
 import { TbTruckDelivery } from "react-icons/tb";
+import { GoogleGenerativeAI} from '@google/generative-ai';
 
+const apiKey=import.meta.env.VITE_GEMINI_API_KEY;
+
+const genAI = new GoogleGenerativeAI(apiKey);
 function Profile() {
     const location = useLocation();
     const user = location.state?.user || JSON.parse(localStorage.getItem('user')) || JSON.parse(sessionStorage.getItem('user'));                            
@@ -18,6 +22,10 @@ function Profile() {
     const [changePasswordMessage, setChangePasswordMessage] = useState("");
     const [successedit, setSuccessedit] = useState("");
     const [successChangePassword, setSuccessChangePassword] = useState("");
+
+    const [showChatbot, setShowChatbot] = useState(false);
+    const [chatMessages, setChatMessages] = useState([]);
+    const [userMessage, setUserMessage] = useState("");
     
     useEffect(() => {
         if(!user) {
@@ -28,6 +36,18 @@ function Profile() {
 
     if(!user) {
         return null;
+    }
+
+    const handleSupport = () =>
+    {
+        setShowChatbot(true);
+    };
+    const handleCloseChatbot = () => {
+        setShowChatbot(false);
+    }
+
+    const handleNewChat = () => {
+        setChatMessages([]);
     }
 
     const [formData, setFormData] = useState({
@@ -133,6 +153,31 @@ function Profile() {
         }
     }
 
+    const handleUserMessage = async () => {
+        if (!userMessage.trim()) {
+            return;
+        }
+    
+        const newMessage = { sender: 'user', content: userMessage };
+        setChatMessages((prevMessages) => [...prevMessages, newMessage]);
+        setUserMessage("");
+    
+        try {
+            const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
+            const chatHistoryString = chatMessages
+                .map((msg) => `${msg.sender === "user" ? "User" : "Bot"}: ${msg.content}`)
+                .join("\n") + `\nUser: ${userMessage}`;
+    
+            const result = await model.generateContent(chatHistoryString);
+            const botResponse = result.response.text(); 
+    
+            setChatMessages((prevMessages) => [...prevMessages, { sender: 'bot', content: botResponse }]);
+        } catch (err) {
+            console.error("Error generating response:", err);
+        }
+    };
+    
 
     return (
         <div className="profile">
@@ -175,9 +220,38 @@ function Profile() {
                 <div className="profile_actions">
                     <button onClick={handleEditMode}>Edit Profile</button>
                     <button onClick={handleChangePassword}>Change Password</button>
+                    <button onClick={handleSupport}>Support</button>
                 </div>
                 <button onClick={handlelogout} className="logout">Logout</button>
         </div>
+        {showChatbot && (
+            <div className="update_form">
+                <div className="update_content">
+                    <h1>Support</h1>
+                    <div style={{ maxHeight: '300px', overflowY: 'auto', marginBottom:'10px'}}>
+                        {chatMessages.map((msg,idx)=> (
+                            <div key={idx} style={{textAlign: msg.sender === "user" ? "right" : "left",marginBottom:'5px'}}>
+                                <strong>{msg.sender === "user" ? "You" : "Kiwi"}:</strong> {msg.content}
+                            </div>
+                        ))}
+                    </div>
+                    <input 
+                    type="text"
+                    value={userMessage}
+                    onChange={(e) => setUserMessage(e.target.value)}
+                    placeholder="Type your message..." 
+                    style={{width: '75%',padding: '10px', marginBottom: '10px'}}
+                    onKeyDown={(e) => e.key === 'Enter' && handleUserMessage()}
+                    />
+                    <b>  </b>
+                        <button onClick={handleUserMessage} >Send</button>
+                    <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                        <button onClick={handleNewChat}>New Chat</button>
+                        <button onClick={handleCloseChatbot}>Close</button>
+                    </div>
+                </div>
+            </div>
+        )}
         {editMode && (
             <div className="update_form">
                 <div className="update_content">
