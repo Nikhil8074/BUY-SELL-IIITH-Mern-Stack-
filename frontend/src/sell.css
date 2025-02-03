@@ -1,0 +1,127 @@
+.add_item
+{
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.sell
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.add_item:hover
+{
+  background-color: #2d3b53;
+}
+
+.items_list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.item_card {
+    border: 1px solid black;
+    background-color: #afa94c;
+    padding: 12px;
+    border-radius: 8px;
+    width: 200px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.item_card h3 {
+    margin: 0 0 8px;
+}
+
+.item_card p {
+    margin: 4px 0;
+}
+
+select {
+    width: 96%;
+    padding: 8px;
+    margin: 8px 0;
+    border: 2px solid black;
+    border-radius: 4px;
+    background-color: #afa94c;
+    color: #2d3b53;
+    font-size: 16px;
+}
+
+select:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+.cart-containerd {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+}
+
+.cart-itemd {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: #afa94c;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    margin-bottom: 10px;
+    min-height: 50px;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.item_detailsd {
+    display: grid;
+    grid-template-columns: 0.5fr 0.5fr 0.9fr 0.1fr 0.75fr;
+    gap: 15px;
+    align-items: center;
+    width: 100%;
+}
+
+.item_detailsd h3,
+.item_detailsd p,
+.item_detailsd button {
+    margin: 0;
+    text-align: left;
+}
+
+.item_detailsd button {
+    justify-self: end;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+h3 {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+p {
+    margin: 0;
+    font-size: 1em;
+}
+
+.item_detailsd input {
+    width: 100%;
+    padding: 5px;
+    border: 2px solid black;
+    background-color: #afa94c;
+    border-radius: 5px;
+}

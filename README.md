@@ -1,2 +1,4 @@
-# BUY-SELL-IIITH-Mern-Stack-
-mern stack assignment with react for frontend and express for backend
+0 - in cart
+1 - buy(pending)
+2 - buy(completed)
+3 - cancelled

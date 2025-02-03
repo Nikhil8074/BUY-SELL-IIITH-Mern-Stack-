@@ -1,0 +1,219 @@
+
+.profile_container {
+    width : 800px;
+    height: 375px;
+    background-color: #afa94c;
+    backdrop-filter: blur(40px);
+    border-radius: 10px;
+    border: 2px solid black;
+    text-align: left;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+}
+
+.profile_container h1 {
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.profile_container p {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.profile_container button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 42%;
+}
+
+.profile_details {
+    color : rgb(126, 63, 5);
+}
+
+.profile_container strong {
+    color : black;
+}
+
+.title
+{
+  position: fixed;
+  height: 80px;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #92b992;
+  color: #793939;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 75%;
+}
+
+.a
+{
+    text-decoration: none;
+    color: #793939;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 4%;
+    /* margin-right: 0%; */
+    transition: all 0.3s ease-in-out;
+    margin-right: 15px;
+}
+
+.a:hover
+{
+  color: #2d3b53;
+}
+
+#b
+{
+    cursor: default;
+}
+
+#b:hover
+{
+  color: #793939;
+}
+
+
+.profile_icon
+{
+    width: 5%;
+    height: 45px;
+    position: fixed;
+    top: 15px;
+    right: 20px;
+    color: #793939;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.profile_icon:hover
+{
+  color: #2d3b53;
+}
+
+.cart_icon
+{
+    width: 30px;
+    height: 50px;
+    color: #793939;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.cart_icon:hover
+{
+  color: #2d3b53;
+}
+
+#history
+{
+    margin-right: 100px;
+}
+
+.profile_actions
+{
+    position: absolute;
+    top: 130px;
+    right: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.profile_actions button
+{
+    width: 150px;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.profile_actions button:hover
+{
+  background-color: #2d3b53;
+}
+
+.logout
+{
+    background-color: #333;
+    color: #fff;
+    transition: all 0.3s ease-in-out;
+}
+.logout:hover
+{
+    background-color: #2d3b53;
+}
+
+.update_form
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center
+}
+
+.update_content
+{
+    background-color: #afa94c;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid black;
+    width: 400px;
+    text-align: left;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+}
+
+.update_content input
+{
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 2px solid black;
+    background-color: #afa94c;
+    border-radius: 5px;
+}
+
+.update_content button
+{
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.update_content button:hover
+{
+  background-color: #2d3b53;
+}
+
+.message
+{
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    text-align: center;
+    color: rgb(104, 50, 50);
+}
